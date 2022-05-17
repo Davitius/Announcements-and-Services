@@ -7,7 +7,7 @@
 
                  
 შესვლისთვის გამოიყენეთ:
-E-mail: test@yhaoo.com
+E-mail: test@gmail.com
 password: 112233
 
 ბაზის დაყენების ინსტრუქცია:
