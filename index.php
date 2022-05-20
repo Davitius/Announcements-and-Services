@@ -179,7 +179,7 @@ if($lastdays <= 0){
 <?php
 
       if(isset($_GET['search'])): ?>
-      <label class="searchresulttext1">ძებნის რეზულტატი :  <?php  echo $locationsearch . " > " . $searchKey; ?></label>
+      <label class="searchresulttext1" id="CountedS1">ძებნის რეზულტატი :  <?php  echo $locationsearch . " > " . $searchKey; ?></label>
        <label class="searchresulttext2" id="CountedS2"></label>
     <?php else: ?>
 <label class="searchresulttext3" id="CountedS3">ბოლო 12 განთავსებული განცხადება.</label>
@@ -321,8 +321,11 @@ if(!$showimg == ""): ?>
 
 <!-- ძებნის რეზულტატის სკრიპტი. -->
 <script>
-    let list = document.getElementById('CountedS2');
-    list.innerHTML = "ნაპოვნია: <?php echo $counted_services; ?> განცხადება.";
+
+    let list2 = document.getElementById('CountedS2');
+    list2.innerHTML = "ნაპოვნია: <?php echo $counted_services; ?> განცხადება.";
+  /*  list2.hidden = true;
+    setInterval(()=> list2.hidden = !list2.hidden, 500); */
 </script>
 
 
