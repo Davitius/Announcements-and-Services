@@ -1,6 +1,6 @@
 <?php
 require_once ('php/connect.php');
-ob_start;
+ob_start();
 
 // ======= ძებნა =========
      if(isset($_GET['productsearch'])){
@@ -33,6 +33,7 @@ if($lastdays <= 0){
     exit();
 }
 
+ $locationsearch = $_GET['location'];
 ?>
 
 <!doctype html>
@@ -156,7 +157,7 @@ if($lastdays <= 0){
      </select>
     <input type="text" style="border-radius: 5px; width: 100%; font-size: 110%; height: 50px" placeholder="საძიებო სიტყვა..." class="form-control" name="productsearch" id="" placeholder="" value=<?php echo @$_GET['productsearch']; ?> >
 
-   <button class="btnsearch" type="submit" value="">ძებნა</button>
+   <button class="btnsearch" type="submit" value="" name="search">ძებნა</button>
    </form>
     </center>
 </div>
@@ -170,11 +171,29 @@ if($lastdays <= 0){
         </div>
         </div>
 
+
+<br><br>
+<div class="searchresultDiv" id="searchresultID">
+<center>
+<?php
+
+      if(isset($_GET['search'])): ?>
+      <label class="searchresulttext1">ძებნის რეზულტატი :  <?php  echo $locationsearch . " > " . $searchKey; ?></label>
+       <label class="searchresulttext2" id="CountedS2">X</label>
+    <?php else: ?>
+<label class="searchresulttext3" id="CountedS3">ბოლო 12 განთავსებული განცხადება.</label>
+<?php endif; ?>
+</center>
+</div>
+
 <!-- განცხადებების გამოტანის ადგილი  -->
  <div class="row" style="height: 860px; overflow-x: hidden;">
 
+
 <!-- თითოეული გამოტანილი განცხადებისთვის რეიტინგის გამოთვლა -->
-<?php while($row = $resultat->fetch_object() ):
+<?php
+     $counted_services = 0;
+     while($row = $resultat->fetch_object() ):
 $author = $row->user;
 $authorquery = "SELECT * FROM users WHERE usermail = '$author'";
 $resultauth = $mysql->query($authorquery);
@@ -194,13 +213,14 @@ $starquantity = $star1q+$star2q+$star3q+$star4q+$star5q;
 if($starquantity !=0){
     $rating = ($star1+$star2+$star3+$star4+$star5)/$starquantity;
                      }else {$rating = 0;}
+
 ?>
 
 <?php
-     if(isset($_GET['productsearch'])){
-     $locationsearch = $_GET['location'];}
       $location = $row->location;
-    if($locationsearch == $location || $locationsearch == ''): ?>
+    if($locationsearch == $location || $locationsearch == ''):
+     $counted_services++;
+     ?>
 
 
 <div class="col-lg-2">
@@ -282,6 +302,8 @@ if(!$showimg == ""): ?>
 
  <div col-lg-1></div>
  </div>
+
+
 <br><br><br>
 
   <!-- FOOTER -->
@@ -295,6 +317,14 @@ if(!$showimg == ""): ?>
 
      <!-- Slider JS -->
   <script src="../js/swiper-bundle.min.js"></script>
+
+<!-- ძებნის რეზულტატის სკრიპტი. -->
+<script>
+    let list = document.getElementById('CountedS2');
+    list.innerHTML = "ნაპოვნია: <?php echo $counted_services; ?> განცხადება.";
+    document.list.append(div);
+</script>
+
 
 <!-- Slider script -->
 <script>
