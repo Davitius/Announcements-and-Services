@@ -173,13 +173,14 @@ if($lastdays <= 0){
 
 
 <br><br>
+<!-- ძებნის რეზულტატის ჩარჩო -->
 <div class="searchresultDiv" id="searchresultID">
 <center>
 <?php
 
       if(isset($_GET['search'])): ?>
       <label class="searchresulttext1">ძებნის რეზულტატი :  <?php  echo $locationsearch . " > " . $searchKey; ?></label>
-       <label class="searchresulttext2" id="CountedS2">X</label>
+       <label class="searchresulttext2" id="CountedS2"></label>
     <?php else: ?>
 <label class="searchresulttext3" id="CountedS3">ბოლო 12 განთავსებული განცხადება.</label>
 <?php endif; ?>
