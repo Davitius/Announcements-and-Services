@@ -322,7 +322,6 @@ if(!$showimg == ""): ?>
 <script>
     let list = document.getElementById('CountedS2');
     list.innerHTML = "ნაპოვნია: <?php echo $counted_services; ?> განცხადება.";
-    document.list.append(div);
 </script>
 
 
