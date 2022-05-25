@@ -79,7 +79,7 @@ if($lastdays <= 0){
 
 <div class="row">
 <!-- რეკლამა #1 ჩარჩო  -->
-<div class="col-lg-4">
+<div class="col-lg-4" id="add1">
        <center><div class="col-lg-12"  style="border-radius: 0; width:340px; height: 280px; padding:0;";>
         <img class="" alt="რეკლამა" width: auto; width="340px;" height="280px" src="img/add1.png">
        </div> </center>
@@ -87,7 +87,7 @@ if($lastdays <= 0){
 
 
 <!-- ძებნის ჩარჩო  -->
-<div class="col-lg-4">
+<div class="col-lg-4" id="searchframe">
 <div class="col-lg-12">
 <center>
 <label class="nstitle3" style="font-size: 130%;">მოიძიე თქვენთვის სასურველი სერვისი</label>
@@ -157,14 +157,14 @@ if($lastdays <= 0){
      </select>
     <input type="text" style="border-radius: 5px; width: 100%; font-size: 110%; height: 50px" placeholder="საძიებო სიტყვა..." class="form-control" name="productsearch" id="" placeholder="" value=<?php echo @$_GET['productsearch']; ?> >
 
-   <button class="btnsearch" type="submit" value="" name="search">ძებნა</button>
+   <button class="btnsearch" type="submit" value="" name="search" id="search">ძებნა</button>
    </form>
     </center>
 </div>
 </div>
 
 <!-- რეკლამა #2 ჩარჩო  -->
-<div class="col-lg-4">
+<div class="col-lg-4" id="add2">
        <center><div class="col-lg-12"  style="border-radius: 0; width:340px; height: 280px; padding:0;";>
         <img class="" alt="რეკლამა" width: auto; width="340px;" height="280px" src="img/add2.png">
        </div> </center>
@@ -326,6 +326,11 @@ if(!$showimg == ""): ?>
     list2.innerHTML = "ნაპოვნია: <?php echo $counted_services; ?> განცხადება.";
   /*  list2.hidden = true;
     setInterval(()=> list2.hidden = !list2.hidden, 500); */
+
+        const searchSelected = document.getElementById('add2');
+        searchSelected.scrollIntoView(top);
+
+
 </script>
 
 
